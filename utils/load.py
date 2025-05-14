@@ -1,6 +1,7 @@
 import pandas as pd
 from google.oauth2.service_account import Credentials
 from googleapiclient.discovery import build
+from sqlalchemy import create_engine
 
 def save_csv(df, filename = 'products.csv'):
     """
@@ -42,14 +43,14 @@ def save_database(df, db_connection=None, table_name='products'):
     Save the DataFrame to a database.
     """
     try:
-        username = "your_username"
-        password = "your_password"
-        host = "your_host"
-        port = "your_port"
-        database = "your_database"
+        username = "postgres"
+        password = "16042004"
+        host = "localhost"
+        port = "5432"
+        database = "etl_database"
         
         # Create a database connection
-        db_connection = f"postgresql://{username}:{password}@{host}:{port}/{database}"
+        db_connection = f'postgresql+psycopg2://{username}:{password}@{host}:{port}/{database}'
         # Assuming you are using SQLAlchemy
         engine = create_engine(db_connection)
         
