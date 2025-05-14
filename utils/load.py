@@ -9,7 +9,7 @@ def save_csv(df, filename = 'products.csv'):
     df.to_csv(filename, index=False)
     print(f"Data saved to {filename}")
     
-def save_google_sheet(df, spreadsheet_id, range_name, credentials_file):
+def save_google_sheets(df, spreadsheet_id, range_name, credentials_file):
     """
     Save the DataFrame to a Google Sheet.
     """
