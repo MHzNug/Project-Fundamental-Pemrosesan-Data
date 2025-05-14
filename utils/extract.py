@@ -6,18 +6,14 @@ def scrape_website(url):
         # Send a GET request to the URL
         response = requests.get(url)
         response.raise_for_status()  # Raise an error for bad responses
-        return response.text
-    except requests.RequestException as e:
-        raise Exception(f"Error fetching data from {url}: {e}")
-    
-    try:
+
         # Parse the HTML content using BeautifulSoup
         soup = BeautifulSoup(response.text, 'html.parser')
         products = []
-        
+
         # Find all product elements
         product_elements = soup.find_all('div', class_='collection-card')
-        
+
         # Loop through each product element and extract details
         for product in product_elements:
             title_element = product.find('h3', class_='product-title')
@@ -37,7 +33,7 @@ def scrape_website(url):
 
             gender_element = product.find('p', string=lambda text: text and 'Gender' in text)
             gender = gender_element.text.strip() if gender_element else None
-            
+
             # Append the product details to the list
             products.append({
                 'title': title,
@@ -47,8 +43,11 @@ def scrape_website(url):
                 'size': size,
                 'gender': gender
             })
-        
+
         return products
-    
+
+    except requests.RequestException as e:
+        raise Exception(f"Error fetching data from {url}: {e}")
     except Exception as e:
+        # Catch any other exceptions during parsing
         raise Exception(f"Error parsing HTML: {e}")
