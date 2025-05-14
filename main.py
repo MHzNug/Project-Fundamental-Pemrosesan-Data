@@ -26,7 +26,7 @@ def main():
     
     transformed_data = transform_data(all_products)
     save_csv(transformed_data, 'products.csv')
-    save_google_sheets(transformed_data, '1qWLxnnAtyXLKWg4NnChmSc_f3wt1JCrOwrEiKA9Xpas', 'Sheet1!A1', 'C:/Users/acer/Downloads/dynamic-digit-438618-b7-c979cebb248a.json')
+    save_google_sheets(transformed_data, '1qWLxnnAtyXLKWg4NnChmSc_f3wt1JCrOwrEiKA9Xpas', 'Sheet1!A1', '../google-sheets-api..json')
     save_database(transformed_data)
     print("Data processing completed successfully.")
     
