@@ -15,8 +15,8 @@ class TestScrapeWebsite(unittest.TestCase):
                 <div class="collection-card">
                     <h3 class="product-title">Test Product</h3>
                     <div class="price-container">$10</div>
-                    <p>Rating: 3 / 5</p>
-                    <p>Colors: 2 color</p>
+                    <p>Rating: ⭐ 3 / 5</p>
+                    <p>Colors: 2 Color</p>
                     <p>Size: M</p>
                     <p>Gender: Men</p>
                 </div>
@@ -46,5 +46,4 @@ class TestScrapeWebsite(unittest.TestCase):
         # Call the function to test and assert it raises an exception
         with self.assertRaises(Exception) as context:
             scrape_website(url)
-        
-        self.assertIn('Error fetching data from', str(context.exception))
+            self.assertIn('Error fetching data from', str(context.exception))
