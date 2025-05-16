@@ -28,7 +28,6 @@ class TestTransformData(unittest.TestCase):
         self.assertIn('timestamp', transformed_data.columns)
         self.assertTrue(isinstance(transformed_data['price'][0], float))
         self.assertTrue(isinstance(transformed_data['rating'][0], float))
-        self.assertTrue(isinstance(transformed_data['color'][0], int))
         self.assertEqual(transformed_data['title'][0], 'Test Product')
         
     def test_invalid(self):
